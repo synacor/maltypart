@@ -1,0 +1,40 @@
+{
+  "name": "maltypart",
+  "description": "Maltypart is a simple multipart builder.",
+  "version": "1.0.0",
+  "authors": [
+    "Jason Miller <jasonmiller@synacor.com>"
+  ],
+  "main": "maltypart.js",
+  "moduleType": [
+    "amd",
+    "cjs",
+    "globals"
+  ],
+  "keywords": [
+    "multipart",
+    "request",
+    "smtp",
+    "formdata"
+  ],
+  "license": "Proprietary",
+  "homepage": "https://stash.corp.synacor.com/projects/APLA/repos/maltypart",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "**/*.min.js",
+    "node_modules",
+    "bower_components",
+    "src",
+    "doctemplate",
+    "docs",
+    "README.md",
+    "demo",
+    "Procfile",
+    "Gruntfile.js",
+    "server.js",
+    "test",
+    "package.json",
+    "logo.png"
+  ]
+}

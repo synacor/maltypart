@@ -1,0 +1,45 @@
+{
+  "name": "maltypart",
+  "version": "1.0.0",
+  "description": "Maltypart is a simple multipart builder.",
+  "main": "maltypart.js",
+  "scripts": {
+    "build": "grunt",
+    "pre-start": "grunt",
+    "start": "node server.js",
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@stash.corp.synacor.com:7999/apla/maltypart.git"
+  },
+  "keywords": [
+    "multipart",
+    "request",
+    "smtp",
+    "formdata"
+  ],
+  "author": "Jason Miller <jasonmiller@synacor.com>",
+  "license": "Proprietary",
+  "readmeFilename": "README.md",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "compression": "^1.0.9",
+    "express": "^4.6.1",
+    "serve-static": "^1.4.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jsdoc": "^0.5.6",
+    "grunt-mocha": "^0.4.11",
+    "jsdoc": "^3.3.0-alpha9",
+    "load-grunt-tasks": "^0.6.0"
+  }
+}
