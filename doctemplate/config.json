@@ -1,0 +1,14 @@
+{
+	"opts" : {
+		"template" : "./doctemplate",
+		"indexName" : "maltypart",
+		"mainpagetitle" : "Maltypart",
+		"private" : false
+	},
+	"tags": {
+		"allowUnknownTags": true
+	},
+	"plugins" : [
+		"plugins/markdown"
+	]
+}
