@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSDoc: Index</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body data-page-title="Index">
+
+	<div id="main">
+		
+		<h1 class="page-title">Index</h1>
+		
+		
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section class="index markdown">
+        <article><p><img src="logo.png" alt="Maltypart"></p>
+<h1>Maltypart</h1><p><strong>Maltypart is a simple multipart request builder.</strong></p>
+<p><em>It is very similar to <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">HTML5 FormData</a>,
+but offers a bit more control over fields and serialization.</em></p>
+<p><strong><a href="demo">Demo</a></strong></p>
+<hr>
+<h2>Why Maltypart?</h2><p>Maltypart is a good fit if your app needs to work with multipart form submissions,
+but you don't want to couple networking logic to your HTML. It supports a few nice
+additions that FormData doesn't offer, and can serialize Strings, Files, Elements and more.</p>
+<hr>
+<h2>Usage</h2><p><strong>Creating a new RequestBody:</strong></p>
+<pre class="prettyprint source lang-js"><code>// Pull in the dependency however you wish: AMD, CJS, Node and globals are all supported
+var RequestBody = require('maltypart').RequestBody;
+
+// Create a new multipart body:
+var request = new RequestBody();</code></pre><p><strong>Appending Strings:</strong></p>
+<pre class="prettyprint source lang-js"><code>// request is from the first example
+
+request.append({
+    // String values get serialized with the default content-type, application/octet-stream:
+    some_key : &quot;some value&quot;,
+
+    // Passing an Object or Array to append() lets you specify multiple fields at once
+    second_key : &quot;second value&quot;
+});</code></pre><p><strong>Appending Typed Content:</strong></p>
+<pre class="prettyprint source lang-js"><code>request.append('example_image', {
+    // Specify an Object with &quot;contentType&quot; and &quot;data&quot; properties to set your own content-type:
+    contentType : &quot;image/png&quot;,
+
+    // Base64-encoded data as a String:
+    data : &quot;iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD&quot;
+            + &quot;///+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDe&quot;
+            + &quot;NGe4Ug9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC&quot;
+
+    // You can also pass a maltypart.RequestField instead of a POJO.
+});</code></pre><p><strong>Appending a File:</strong></p>
+<pre class="prettyprint source lang-js"><code>request.append('some_file', new File(), function() {
+    // file added.
+});</code></pre><p><strong>Using with XMLHttpRequest:</strong></p>
+<pre class="prettyprint source lang-js"><code>// A standard XHR
+var xhr = new XMLHttpRequest();
+xhr.open('POST', '/upload', true);
+
+// Set the request's content-type appropriately:
+xhr.setRequestHeader('Content-Type', request.getContentType());
+
+// Set the multipart-encoded body:
+xhr.send( request.getData() );</code></pre><hr>
+<h2>Instantiation</h2><p><strong>Via node / browserify:</strong></p>
+<pre class="prettyprint source lang-js"><code>var maltypart = require('maltypart');</code></pre><p><strong>Via AMD / requirejs:</strong></p>
+<pre class="prettyprint source lang-js"><code>define(['maltypart'], function(maltypart) {
+
+});</code></pre><p><strong>Via globals / script tag:</strong></p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;maltypart.js&quot;>&lt;/script>
+&lt;script>
+    maltypart;  // now it's exposed as a &quot;maltypart&quot; global
+&lt;/script></code></pre><h2>Installation</h2><p><strong>Installation via Bower:</strong> <em>(Recommended)</em></p>
+<pre class="prettyprint source lang-bash"><code>bower install maltypart=git+ssh://git@stash.corp.synacor.com:7999/apla/maltypart.git</code></pre><p><strong>Manual Download:</strong></p>
+<ul>
+<li><a href="dist/maltypart.js">maltypart.js</a> - <em>full source with comments, for development</em></li>
+<li><a href="dist/maltypart.min.js">maltypart.min.js</a> - <em>minified without comments, for production</em></li>
+</ul>
+<h2>License</h2><p>Proprietary / Closed-Source</p>
+<p><img src="http://26.media.tumblr.com/tumblr_m26u79as6N1qzdzbuo1_500.jpg" alt="Malt Party"></p></article>
+    </section>
+
+
+
+
+
+
+	</div>
+	
+	<a class="menuLink">Menu</a>
+	
+	<nav>
+		<h2><a href="index.html">maltypart</a></h2><div class="nav-classes"><h3>Classes</h3><ul><li title="module:maltypart.RequestBody"><a href="module-maltypart.RequestBody.html">RequestBody</a></li><div class="navinner nav-methods"><h4>Methods</h4><ul><li title="module:maltypart.RequestBody#append"><a href="module-maltypart.RequestBody.html#append">append</a></li><li title="module:maltypart.RequestBody#getContentType"><a href="module-maltypart.RequestBody.html#getContentType">getContentType</a></li><li title="module:maltypart.RequestBody#getData"><a href="module-maltypart.RequestBody.html#getData">getData</a></li><li title="module:maltypart.RequestBody#getType"><a href="module-maltypart.RequestBody.html#getType">getType</a></li><li title="module:maltypart.RequestBody#setBoundary"><a href="module-maltypart.RequestBody.html#setBoundary">setBoundary</a></li><li title="module:maltypart.RequestBody#setField"><a href="module-maltypart.RequestBody.html#setField">setField</a></li><li title="module:maltypart.RequestBody#setFileField"><a href="module-maltypart.RequestBody.html#setFileField">setFileField</a></li><li title="module:maltypart.RequestBody#setType"><a href="module-maltypart.RequestBody.html#setType">setType</a></li><li title="module:maltypart.RequestBody#toString"><a href="module-maltypart.RequestBody.html#toString">toString</a></li></ul></div><li title="module:maltypart.RequestField"><a href="module-maltypart.RequestField.html">RequestField</a></li></ul>
+	</nav>
+
+	<footer>
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Nov 05 2014 15:49:17 GMT-0500 (EST)
+	</footer>
+
+	<script src="scripts/prettify/prettify.js"></script>
+	<script src="scripts/prettify/lang-css.js"></script>
+	<script src="scripts/enhancements.js"> </script>
+</body>
+</html>

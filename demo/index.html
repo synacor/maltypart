@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Maltypart Demo</title>
+
+		<style type="text/css">
+			html,body {
+				background: #FAFAFA;
+				font: 14px/1.21 'Helvetica Neue', helvetica, arial, sans-serif;
+				padding: 0;
+				margin: 0;
+			}
+			body {
+				margin: 0 5px 30px;
+			}
+			hr {
+				margin: 20px;
+				padding: 0;
+				height: 1px;
+				border: none;
+				box-shadow: 0 1px 0 rgba(255,255,255,0.4);
+				background: rgba(0,0,0,0.2);
+				font-size: 1px;
+			}
+			.form {
+				margin: 5px;
+				padding: 5px;
+				background: #E6F0F6;
+				border: 1px solid #DEF;
+			}
+			label {
+				display: block;
+				margin: 5px;
+			}
+			pre {
+				margin: 5px;
+				padding: 5px;
+				overflow: auto;
+				background: #EEE;
+				border: 1px solid #CCC;
+				border-radius: 3px;
+				font-size: 10px;
+			}
+			h5 {
+				margin: 10px 0 0;
+				padding: 0;
+				font-size: 120%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="form">
+			<label>
+				Server:
+				<select id="host">
+					<option value="service.staging.apla.carbyn.dev.opal.synacor.com">APLA Service - Staging</option>
+					<option>localhost:5000</option>
+					<option>localhost:1337</option>
+					<option>localhost:9000</option>
+				</select>
+			</label>
+
+			<label>
+				Icon: <input type="file" id="icon" />
+			</label>
+
+			<button id="upload">Upload as App</button>
+		</div>
+
+		<br />
+
+		<h5>Request</h5>
+
+		Content-Type:
+		<pre id="type"></pre>
+
+		Body:
+		<pre id="req"></pre>
+
+		<hr />
+
+		<h5>Response</h5>
+
+		Status:
+		<pre id="status"></pre>
+
+		Body:
+		<pre id="res"></pre>
+
+		<hr />
+
+		<h5>Result</h5>
+
+		Icon: <img id="app-icon" />
+
+		<br />
+
+
+		<script src="maltypart.js"></script>
+
+		<script>
+			(function() {
+				// dom helper
+				var $=document.querySelector.bind(document);
+				Element.prototype.on = Element.prototype.addEventListener;
+
+				var request = new multipart.RequestBody();
+
+				// Example manifest
+				var manifest = {
+					name : "com.testing.App",
+					icon : "package://UI/icon.png",
+					author : {
+						name : "Jason Miller"
+					},
+					schema_version : "/catalog/schemas/gen4-package/v0",
+					version : "1.0",
+					permissions : [],
+					targets : [
+						{
+							intents : [],
+							displayName : "com.testing.App",
+							name : "com.testing.App.App",
+							form_factors : [],
+							run_config : {
+								launch_url : "http://littlealchemy.com/",
+								environments : []
+							},
+							type : "application",
+							public : true
+						}
+					]
+				};
+
+
+				// set some fields. keys are field names, values are field values.
+				request.append({
+					manifest : new multipart.RequestField(
+						JSON.stringify(manifest),
+						'application/json'
+					)
+				});
+
+
+				// Prints out the request body:
+				function showRequest() {
+					$('#type').textContent = request.getContentType();
+					$('#req').textContent = request.toString();
+				}
+				showRequest();
+
+
+				// Uploads to the selected server:
+				function upload() {
+					var host = $('#host').value,
+						url = 'http://'+host+'/catalog/v0/packages?client=localhost',
+						icon = url.replace('?', '/'+manifest.name+'/icon?'),
+						xhr = new XMLHttpRequest();
+					xhr.open('POST', url, true);
+					xhr.onreadystatechange = function() {
+						if (xhr.readyState===4) {
+							// request completed, log response:
+							$('#status').textContent = xhr.status;
+							$('#res').textContent = prettyJSON(xhr.responseText);
+
+							// show that the server accepted and upated the package icon:
+							$('#app-icon').setAttribute('src', icon);
+
+							// scroll to response output:
+							document.body.scrollTop = $('#status').offsetTop;
+						}
+					};
+
+					// Magic:
+					xhr.setRequestHeader('Content-Type', request.getContentType());
+					xhr.send(request.getData());
+				}
+
+
+				// Pretty print JSON:
+				function prettyJSON(json) {
+					try {
+						json = JSON.stringify(JSON.parse(json),null,'  ');
+					} catch(e) {}
+					return json;
+				}
+
+
+				// Icon file input sets the file as a field:
+				$('#icon').on('change', function(e) {
+					// Set file field: [name, file, callback]
+					request.append('icon', e.target.files[0], showRequest);
+				}, false);
+
+				$('#upload').on('click', upload, false);
+			}());
+		</script>
+	</body>
+</html>
