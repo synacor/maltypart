@@ -106,7 +106,7 @@
 				var $=document.querySelector.bind(document);
 				Element.prototype.on = Element.prototype.addEventListener;
 
-				var request = new multipart.RequestBody();
+				var request = new maltypart.RequestBody();
 
 				// Example manifest
 				var manifest = {
@@ -137,7 +137,7 @@
 
 				// set some fields. keys are field names, values are field values.
 				request.append({
-					manifest : new multipart.RequestField(
+					manifest : new maltypart.RequestField(
 						JSON.stringify(manifest),
 						'application/json'
 					)
