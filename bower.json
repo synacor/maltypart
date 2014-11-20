@@ -1,7 +1,7 @@
 {
   "name": "maltypart",
   "description": "Maltypart is a simple multipart builder.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     "Jason Miller <jasonmiller@synacor.com>"
   ],

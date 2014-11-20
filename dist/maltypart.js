@@ -136,7 +136,7 @@
 			if (value && value.nodeType && value.nodeName && value.getAttribute) {
 				value = value.value;
 			}
-			else if (!value || !(value instanceof RequestField || (value.contentType && value.data))) {
+			else if (!isArray(value) && (!value || !(value instanceof RequestField || (value.contentType && value.data)))) {
 				value = value + '';
 			}
 			if (name.match(/\[\]$/g)) {
