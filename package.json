@@ -1,6 +1,6 @@
 {
   "name": "maltypart",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Maltypart is a simple multipart builder.",
   "main": "maltypart.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@stash.corp.synacor.com:7999/apla/maltypart.git"
+    "url": "https://jasonmiller@stash.corp.synacor.com/scm/apla/maltypart.git"
   },
   "keywords": [
     "multipart",
@@ -25,12 +25,11 @@
   "directories": {
     "doc": "docs"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "compression": "^1.0.9",
     "express": "^4.6.1",
-    "serve-static": "^1.4.0"
-  },
-  "devDependencies": {
+    "serve-static": "^1.4.0",
     "connect-busboy": "0.0.2",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
