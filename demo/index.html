@@ -52,21 +52,9 @@
 	<body>
 
 		<div class="form">
-			<label>
-				Server:
-				<select id="host">
-					<option value="service.staging.apla.carbyn.dev.opal.synacor.com">APLA Service - Staging</option>
-					<option>localhost:5000</option>
-					<option>localhost:1337</option>
-					<option>localhost:9000</option>
-				</select>
-			</label>
-
-			<label>
-				Icon: <input type="file" id="icon" />
-			</label>
-
-			<button id="upload">Upload as App</button>
+			<label>Text: <input type="text" id="text"></label>
+			<label>Image: <input type="file" id="image"></label>
+			<button id="submit">Submit</button>
 		</div>
 
 		<br />
@@ -93,80 +81,54 @@
 
 		<h5>Result</h5>
 
-		Icon: <img id="app-icon" />
-
-		<br />
+		Text: <pre id="text-out"></pre>
+		Image: <img id="image-out" />
 
 
 		<script src="../dist/maltypart.js"></script>
 
 		<script>
 			(function() {
-				// dom helper
-				var $=document.querySelector.bind(document);
-				Element.prototype.on = Element.prototype.addEventListener;
+				var $ = document.querySelector.bind(document),
+					request = new maltypart.RequestBody();
 
-				var request = new maltypart.RequestBody();
+				function setup() {
+					$('#text').addEventListener('change', function() {
+						request.append('text', this.value, true);
+						showRequest();
+					}, false);
 
-				// Example manifest
-				var manifest = {
-					name : "com.testing.App",
-					icon : "package://UI/icon.png",
-					author : {
-						name : "Jason Miller"
-					},
-					schema_version : "/catalog/schemas/gen4-package/v0",
-					version : "1.0",
-					permissions : [],
-					targets : [
-						{
-							intents : [],
-							displayName : "com.testing.App",
-							name : "com.testing.App.App",
-							form_factors : [],
-							run_config : {
-								launch_url : "http://littlealchemy.com/",
-								environments : []
-							},
-							type : "application",
-							public : true
-						}
-					]
-				};
+					$('#image').addEventListener('change', function(e) {
+						request.append('image', e.target.files[0], showRequest);
+					}, false);
 
+					$('#submit').addEventListener('click', submit, false);
 
-				// set some fields. keys are field names, values are field values.
-				request.append({
-					manifest : new maltypart.RequestField(
-						JSON.stringify(manifest),
-						'application/json'
-					)
-				});
-
+					showRequest();
+				}
 
 				// Prints out the request body:
 				function showRequest() {
 					$('#type').textContent = request.getContentType();
 					$('#req').textContent = request.toString();
 				}
-				showRequest();
-
 
 				// Uploads to the selected server:
-				function upload() {
-					var host = $('#host').value,
-						url = 'http://'+host+'/catalog/v0/packages?client=localhost',
-						icon = url.replace('?', '/'+manifest.name+'/icon?'),
-						xhr = new XMLHttpRequest();
-					xhr.open('POST', url, true);
+				function submit() {
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', '/upload-test', true);
 					xhr.onreadystatechange = function() {
+						var json;
 						if (xhr.readyState===4) {
+							json = JSON.parse(xhr.responseText);
+
 							// request completed, log response:
 							$('#status').textContent = xhr.status;
-							$('#res').textContent = prettyJSON(xhr.responseText);
+							$('#res').textContent = JSON.stringify(json, null, '  ');
 
 							// show that the server accepted and upated the package icon:
-							$('#app-icon').setAttribute('src', icon);
+							$('#text-out').textContent = json.fields.text;
+							$('#image-out').setAttribute('src', 'data:image/png;base64,' + json.fields.image.base64);
 
 							// scroll to response output:
 							document.body.scrollTop = $('#status').offsetTop;
@@ -178,23 +140,7 @@
 					xhr.send(request.getData());
 				}
 
-
-				// Pretty print JSON:
-				function prettyJSON(json) {
-					try {
-						json = JSON.stringify(JSON.parse(json),null,'  ');
-					} catch(e) {}
-					return json;
-				}
-
-
-				// Icon file input sets the file as a field:
-				$('#icon').on('change', function(e) {
-					// Set file field: [name, file, callback]
-					request.append('icon', e.target.files[0], showRequest);
-				}, false);
-
-				$('#upload').on('click', upload, false);
+				setup();
 			}());
 		</script>
 	</body>
