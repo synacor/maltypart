@@ -215,7 +215,8 @@
 						v = iter[i];
 						if (bodyType==='multipart') {
 							headers = v.headers;
-							type = 'application/octet-stream';
+							//type = 'application/octet-stream';
+							type = null;
 							if (v.contentType) {
 								type = v.contentType;
 								v = v.data;
@@ -225,7 +226,10 @@
 							if (iter[i].filename) {
 								item += '; filename="' + iter[i].filename + '"';
 							}
-							item += '\r\nContent-type: ' + type + '\r\n';
+							item += '\r\n';
+							if (type) {
+								item += 'Content-type: ' + type + '\r\n';
+							}
 							if (headers) {
 								for (p in headers) {
 									if (headers.hasOwnProperty(p)) {
