@@ -14,6 +14,8 @@ but offers a bit more control over fields and serialization.*
 [![Dependency Status](http://img.shields.io/david/synacorinc/maltypart.svg?style=flat)](https://david-dm.org/synacorinc/maltypart)
 [![devDependency Status](http://img.shields.io/david/dev/synacorinc/maltypart.svg?style=flat)](https://david-dm.org/synacorinc/maltypart#info=devDependencies)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 
 ---
 

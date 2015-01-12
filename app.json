@@ -1,0 +1,10 @@
+{
+	"name": "maltypart",
+	"description": "Maltypart is a simple multipart request builder.",
+	"repository": "https://github.com/synacorinc/maltypart",
+	"logo": "http://maltypart.herokuapp.com/logo.png",
+	"keywords": ["node", "multipart", "request"],
+	"env": {
+		"NPM_CONFIG_PRODUCTION": "false"
+	}
+}
