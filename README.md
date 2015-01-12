@@ -1,15 +1,19 @@
+Maltypart [![NPM Version](http://img.shields.io/npm/v/maltypart.svg?style=flat)](https://www.npmjs.org/package/maltypart) [![Bower Version](http://img.shields.io/bower/v/maltypart.svg?style=flat)](http://bower.io/search/?q=maltypart)
+=========
 
 ![Maltypart](logo.png)
-
-Maltypart
-=========
 
 **Maltypart is a simple multipart request builder.**
 
 *It is very similar to [HTML5 FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData),
 but offers a bit more control over fields and serialization.*
 
-**[Demo](demo)**
+**[View Demo](http://maltypart.herokuapp.com)**
+
+[![Build Status](https://img.shields.io/travis/synacorinc/maltypart.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/maltypart)
+[![Dependency Status](http://img.shields.io/david/synacorinc/maltypart.svg?style=flat)](https://david-dm.org/synacorinc/maltypart)
+[![devDependency Status](http://img.shields.io/david/dev/synacorinc/maltypart.svg?style=flat)](https://david-dm.org/synacorinc/maltypart#info=devDependencies)
+
 
 ---
 
@@ -147,4 +151,4 @@ License
 BSD
 
 
-![Malt Party](http://26.media.tumblr.com/tumblr_m26u79as6N1qzdzbuo1_500.jpg)
+![Malt-ey Party](http://26.media.tumblr.com/tumblr_m26u79as6N1qzdzbuo1_500.jpg)
