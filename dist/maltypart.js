@@ -44,7 +44,8 @@
 	/**	@private */
 	var count=0, p;
 
-	/**	@class Represents a multipart message body to be serialized.
+	/**	Represents a multipart message body to be serialized.
+	 *	@class
 	 *	@memberOf module:maltypart
 	 *	@param {Object|Array} fields
 	 *	@param {String} [boundary=random]
@@ -290,7 +291,8 @@
 
 
 
-	/**	@class Represents a content field to be added to a request.
+	/**	Represents a content field to be added to a request.
+	 *	@class
 	 *	@memberOf module:maltypart
 	 *	@param {Any} data				The binary or textual value of the field
 	 *	@param {String} contentType		Content-Type header for the field
