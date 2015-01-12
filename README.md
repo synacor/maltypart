@@ -8,7 +8,7 @@ Maltypart [![NPM Version](http://img.shields.io/npm/v/maltypart.svg?style=flat)]
 *It is very similar to [HTML5 FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData),
 but offers a bit more control over fields and serialization.*
 
-**[View Demo](http://maltypart.herokuapp.com)**
+**[View Demo](http://maltypart.herokuapp.com/demo)**
 
 [![Build Status](https://img.shields.io/travis/synacorinc/maltypart.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/maltypart)
 [![Dependency Status](http://img.shields.io/david/synacorinc/maltypart.svg?style=flat)](https://david-dm.org/synacorinc/maltypart)
