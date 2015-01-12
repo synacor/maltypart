@@ -132,7 +132,7 @@ Installation
 **Installation via Bower:** *(Recommended)*
 
 ```bash
-bower install maltypart=git+ssh://git@stash.corp.synacor.com:7999/apla/maltypart.git
+bower install maltypart
 ```
 
 **Manual Download:**
@@ -144,7 +144,7 @@ bower install maltypart=git+ssh://git@stash.corp.synacor.com:7999/apla/maltypart
 License
 -------
 
-Proprietary / Closed-Source
+BSD
 
 
 ![Malt Party](http://26.media.tumblr.com/tumblr_m26u79as6N1qzdzbuo1_500.jpg)

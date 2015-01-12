@@ -1,6 +1,6 @@
 {
   "name": "maltypart",
-  "description": "Maltypart is a simple multipart builder.",
+  "description": "Maltypart is a simple multipart request builder.",
   "version": "1.1.0",
   "authors": [
     "Jason Miller <jasonmiller@synacor.com>"
@@ -18,7 +18,7 @@
     "formdata"
   ],
   "license": "Proprietary",
-  "homepage": "https://stash.corp.synacor.com/projects/APLA/repos/maltypart",
+  "homepage": "https://github.com/synacorinc/maltypart",
   "private": true,
   "ignore": [
     "**/.*",

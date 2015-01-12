@@ -1,7 +1,7 @@
 {
   "name": "maltypart",
   "version": "1.1.0",
-  "description": "Maltypart is a simple multipart builder.",
+  "description": "Maltypart is a simple multipart request builder.",
   "main": "maltypart.js",
   "scripts": {
     "build": "grunt",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://jasonmiller@stash.corp.synacor.com/scm/apla/maltypart.git"
+    "url": "git@github.com:synacorinc/maltypart.git"
   },
   "keywords": [
     "multipart",
@@ -20,26 +20,26 @@
     "formdata"
   ],
   "author": "Jason Miller <jasonmiller@synacor.com>",
-  "license": "Proprietary",
+  "license": "BSD",
   "readmeFilename": "README.md",
   "directories": {
     "doc": "docs"
   },
   "dependencies": {},
   "devDependencies": {
-    "compression": "^1.0.9",
-    "express": "^4.6.1",
-    "serve-static": "^1.4.0",
+    "compression": "^1.3.0",
+    "express": "^4.10.7",
+    "serve-static": "^1.8.0",
     "connect-busboy": "0.0.2",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-uglify": "~0.7.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-jsdoc": "^0.5.6",
+    "grunt-jsdoc": "^0.5.7",
     "grunt-mocha": "^0.4.11",
-    "jsdoc": "^3.3.0-alpha9",
-    "load-grunt-tasks": "^0.6.0"
+    "jsdoc": "^3.3.0-alpha13",
+    "load-grunt-tasks": "^2.0.0"
   }
 }
