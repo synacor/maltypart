@@ -5,7 +5,7 @@
   "main": "maltypart.js",
   "scripts": {
     "build": "grunt",
-    "pre-start": "grunt",
+    "prestart": "grunt",
     "start": "node server.js",
     "test": "grunt test"
   },
