@@ -129,11 +129,11 @@
 		*	@param {Object} [headers]			If set, headers will be added to the field
 		 *	@returns {this}
 		 */
-		setField : function(name, value, replace, headers) {
+		setField : function(name, value, replace, headers, callback) {
 			var fields = this.fields;
 			name = name + '';
 			if ((window.File && value instanceof window.File) || (window.Blob && value instanceof window.Blob)) {
-				return this.setFileField(name, value, typeof replace==='function' && replace, headers);
+				return this.setFileField.apply(this, arguments);
 			}
 			if (value && value.nodeType && value.nodeName && value.getAttribute) {
 				value = value.value;
@@ -163,16 +163,20 @@
 		 *	@param {Function} [callback]	A callback to call once the file has been fully added.
 		 *	@returns {this}
 		 */
-		setFileField : function(name, file, callback, headers) {
+		setFileField : function(name, file, replace, headers, callback) {
 			var self = this,
 				reader = new FileReader();
+			if (typeof replace==='function') {
+				callback = replace;
+				replace = true;
+			}
 			reader.onloadend = function() {
 				self.setField(name, new RequestField(
 					arrayBufferToBinaryString(reader.result),
 					file.type,
 					file.name,
 					headers
-				));
+				), replace!==false);
 				if (typeof callback==='function') {
 					callback();
 				}
