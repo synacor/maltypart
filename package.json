@@ -1,6 +1,6 @@
 {
   "name": "maltypart",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Maltypart is a simple multipart request builder.",
   "main": "maltypart.js",
   "scripts": {

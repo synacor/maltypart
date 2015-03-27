@@ -133,7 +133,7 @@
 			var fields = this.fields;
 			name = name + '';
 			if ((window.File && value instanceof window.File) || (window.Blob && value instanceof window.Blob)) {
-				return this.setFileField(name, value, typeof replace==='function' && replace);
+				return this.setFileField(name, value, typeof replace==='function' && replace, headers);
 			}
 			if (value && value.nodeType && value.nodeName && value.getAttribute) {
 				value = value.value;
