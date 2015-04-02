@@ -1,6 +1,8 @@
 Maltypart [![NPM Version](http://img.shields.io/npm/v/maltypart.svg?style=flat)](https://www.npmjs.org/package/maltypart) [![Bower Version](http://img.shields.io/bower/v/maltypart.svg?style=flat)](http://bower.io/search/?q=maltypart)
 =========
 
+[![Join the chat at https://gitter.im/synacorinc/maltypart](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacorinc/maltypart?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![Maltypart](logo.png)
 
 **Maltypart is a simple multipart request builder.**
