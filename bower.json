@@ -1,11 +1,11 @@
 {
   "name": "maltypart",
   "description": "Maltypart is a simple multipart request builder.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "authors": [
     "Jason Miller <jasonmiller@synacor.com>"
   ],
-  "main": "maltypart.js",
+  "main": "dist/maltypart.js",
   "moduleType": [
     "amd",
     "cjs",

@@ -1,8 +1,8 @@
 {
   "name": "maltypart",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Maltypart is a simple multipart request builder.",
-  "main": "maltypart.js",
+  "main": "dist/maltypart.js",
   "scripts": {
     "build": "grunt",
     "prestart": "grunt",
