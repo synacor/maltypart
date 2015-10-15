@@ -25,7 +25,7 @@ describe('maltypart', function() {
 				};
 			new maltypart.RequestBody(fields);
 			expect(spy).to.have.been.calledOnce;
-			expect(spy).to.have.been.calledWithExactly(fields);
+			expect(spy).to.have.been.calledWith(fields);
 			spy.restore();
 		});
 
@@ -83,6 +83,36 @@ describe('maltypart', function() {
 				//	{ name:'test', value:new File() }
 				//]);
 				//expect(body.getType()).to.equal('multipart');
+			});
+		});
+
+		describe('#append', function() {
+			it('should invoke callbacks for single fields', function() {
+				var body = new maltypart.RequestBody(),
+					callback = sinon.spy();
+
+				body.append('foo', 'bar', callback);
+				expect(callback).to.have.been.calledOnce;
+
+				body.append('test', new maltypart.RequestField('<h1>hi</h1>', 'text/html'), callback);
+				expect(callback).to.have.been.calledTwice;
+			});
+
+			it('should invoke callbacks for multiple fields', function() {
+				var body = new maltypart.RequestBody(),
+					callback = sinon.spy();
+
+				body.append({
+					foo: 'bar',
+					test: new maltypart.RequestField('<h1>hi</h1>', 'text/html')
+				}, callback);
+				expect(callback).to.have.been.calledOnce;
+
+				body.append([
+					{ name: 'foo2', value: 'bar' },
+					{ name: 'test2', value: new maltypart.RequestField('<h1>hi</h1>', 'text/html') }
+				], callback);
+				expect(callback).to.have.been.calledTwice;
 			});
 		});
 	});
