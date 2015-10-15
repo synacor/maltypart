@@ -47,13 +47,18 @@
 	/**	Represents a multipart message body to be serialized.
 	 *	@class
 	 *	@memberOf module:maltypart
-	 *	@param {Object|Array} fields
-	 *	@param {String} [boundary=random]
+	 *	@param {Object|Array} fields		A key-value Object map of fields to append
+	 *	@param {String} [boundary=random]	Override the default MIME part boundary
+	 *	@param {String} [callback]			If set, invoked after appending `fields`
 	 */
-	function RequestBody(fields, boundary) {
+	function RequestBody(fields, boundary, callback) {
 		this.fields = {};
+		if (typeof boundary==='function') {
+			callback = boundary;
+			boundary = null;
+		}
 		if (fields) {
-			this.append(fields);
+			this.append(fields, callback);
 		}
 		this.setBoundary(boundary);
 	}
@@ -102,22 +107,36 @@
 		 *	@returns {this}
 		 */
 		append : function(fields, replace) {
-			var name, i;
+			var name, i, pending, callback;
 			if (typeof fields==='string' && arguments.length>=2) {
-				this.setField.apply(this, arguments);
+				return this.setField.apply(this, arguments);
 			}
-			else if (isArray(fields)) {
+
+			if (typeof replace==='function') {
+				pending = 1;
+				callback = replace;
+				replace = function() {
+					if (!--pending) callback();
+				};
+			}
+
+			if (isArray(fields)) {
 				for (i=0; i<fields.length; i++) {
+					pending++;
 					this.setField(fields[i].name, fields[i].value, replace);
 				}
 			}
 			else {
 				for (name in fields) {
 					if (fields.hasOwnProperty(name)) {
+						pending++;
 						this.setField(name, fields[name], replace);
 					}
 				}
 			}
+
+			if (pending) replace();
+
 			return this;
 		},
 
@@ -134,6 +153,10 @@
 			name = name + '';
 			if ((window.File && value instanceof window.File) || (window.Blob && value instanceof window.Blob)) {
 				return this.setFileField.apply(this, arguments);
+			}
+			if (typeof replace==='function') {
+				callback = replace;
+				replace = true;
 			}
 			if (value && value.nodeType && value.nodeName && value.getAttribute) {
 				value = value.value;
@@ -152,6 +175,9 @@
 			}
 			else {
 				fields[name] = value;
+			}
+			if (typeof callback==='function') {
+				callback();
 			}
 			return this;
 		},

@@ -39,7 +39,7 @@
     
         
 <dt>
-    <h4 class="name" id="RequestBody"><span class="type-signature"></span>new RequestBody<span class="signature">(fields, <span class="optional">boundary</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="RequestBody"><span class="type-signature"></span>new RequestBody<span class="signature">(fields, <span class="optional">boundary</span>, <span class="optional">callback</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -116,7 +116,7 @@
                 </td>
             
             
-            <td class="description last"></td>
+            <td class="description last"><p>A key-value Object map of fields to append</p></td>
         </tr>
 	
 	
@@ -155,7 +155,44 @@
                 </td>
             
             
-            <td class="description last"></td>
+            <td class="description last"><p>Override the default MIME part boundary</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last"><p>If set, invoked after appending <code>fields</code></p></td>
         </tr>
 	
 	
@@ -186,7 +223,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line53">line 53</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line54">line 54</a>
     </li></ul></dd>
     
     
@@ -262,7 +299,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line67">line 67</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line72">line 72</a>
     </li></ul></dd>
     
     
@@ -434,7 +471,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line104">line 104</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line109">line 109</a>
     </li></ul></dd>
     
     
@@ -589,7 +626,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line289">line 289</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line315">line 315</a>
     </li></ul></dd>
     
     
@@ -680,7 +717,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line270">line 270</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line296">line 296</a>
     </li></ul></dd>
     
     
@@ -775,7 +812,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line84">line 84</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line89">line 89</a>
     </li></ul></dd>
     
     
@@ -934,7 +971,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line194">line 194</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line220">line 220</a>
     </li></ul></dd>
     
     
@@ -1205,7 +1242,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line132">line 132</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line151">line 151</a>
     </li></ul></dd>
     
     
@@ -1414,7 +1451,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line166">line 166</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line192">line 192</a>
     </li></ul></dd>
     
     
@@ -1549,7 +1586,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line74">line 74</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line79">line 79</a>
     </li></ul></dd>
     
     
@@ -1696,7 +1733,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line204">line 204</a>
+        <a href="maltypart.js.html">maltypart.js</a>, <a href="maltypart.js.html#line230">line 230</a>
     </li></ul></dd>
     
     
@@ -1765,7 +1802,7 @@
 	</nav>
 
 	<footer>
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Wed Jul 29 2015 21:20:50 GMT-0400 (EDT)
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Thu Oct 15 2015 14:31:17 GMT-0400 (EDT)
 	</footer>
 
 	<script src="scripts/prettify/prettify.js"></script>
