@@ -106,36 +106,51 @@
 		 *	@param {Boolean} [replace=true]		By default, any existing field with the same name is replaced. If `replace` is set to `false`, existing values will be left in-place, and the new value will be appended. This results in duplicate keys (which can be useful!).
 		 *	@returns {this}
 		 */
-		append : function(fields, replace) {
-			var name, i, pending, callback;
+		append : function(fields, replace, callback) {
+			var name, val, i, pending, cb;
 			if (typeof fields==='string' && arguments.length>=2) {
 				return this.setField.apply(this, arguments);
 			}
 
 			if (typeof replace==='function') {
-				pending = 1;
+				i = callback;
 				callback = replace;
-				replace = function() {
+				replace = i;
+			}
+
+			if (typeof callback==='function') {
+				pending = 1;
+				cb = function() {
 					if (!--pending) callback();
 				};
 			}
 
 			if (isArray(fields)) {
 				for (i=0; i<fields.length; i++) {
+					val = fields[i];
 					pending++;
-					this.setField(fields[i].name, fields[i].value, replace);
+					this.setField(val.name, val.value, replace!==false, null, cb);
 				}
 			}
 			else {
 				for (name in fields) {
 					if (fields.hasOwnProperty(name)) {
-						pending++;
-						this.setField(name, fields[name], replace);
+						val = fields[name];
+						if (isArray(val)) {
+							for (i=0; i<val.length; i++) {
+								pending++;
+								this.setField(name, val[i], replace===true, null, cb);
+							}
+						}
+						else {
+							pending++;
+							this.setField(name, val, replace!==false, null, cb);
+						}
 					}
 				}
 			}
 
-			if (pending) replace();
+			if (pending) cb();
 
 			return this;
 		},
