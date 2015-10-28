@@ -114,6 +114,79 @@ describe('maltypart', function() {
 				], callback);
 				expect(callback).to.have.been.calledTwice;
 			});
+
+			it('should append multiple fields with the same name', function() {
+				var body = new maltypart.RequestBody(),
+					callback = sinon.spy();
+
+				body.append({
+					foo: 'bar',
+					test: new maltypart.RequestField('<h1>hi</h1>', 'text/html'),
+					multiple: [
+						new maltypart.RequestField('<a>a</a>', 'text/html'),
+						new maltypart.RequestField('b', 'text/plain'),
+						new maltypart.RequestField('{"c":"c"}', 'text/json')
+					]
+				}, callback);
+
+				expect(callback).to.have.been.calledOnce;
+
+				expect(body.fields)
+					.to.have.property('test')
+					.that.is.an('object');
+
+				expect(body.fields)
+					.to.have.property('multiple')
+					.that.is.an('array')
+					.with.length(3);
+			});
+
+			it('should serialize complex example', function() {
+				var body = new maltypart.RequestBody(),
+					callback = sinon.spy();
+
+				body.append({
+					foo: 'bar',
+					test: new maltypart.RequestField('<h1>hi</h1>', 'text/html'),
+					multiple: [
+						new maltypart.RequestField('<a>a</a>', 'text/html'),
+						new maltypart.RequestField('b', 'text/plain'),
+						new maltypart.RequestField('{"c":"c"}', 'text/json')
+					]
+				});
+
+				var boundary = body.boundary;
+
+				var reference = '\
+--'+boundary+'\r\n\
+Content-Disposition: form-data; name="foo"\r\n\
+\r\n\
+bar\r\n\
+--'+boundary+'\r\n\
+Content-Disposition: form-data; name="test"\r\n\
+Content-type: text/html\r\n\
+\r\n\
+<h1>hi</h1>\r\n\
+--'+boundary+'\r\n\
+Content-Disposition: form-data; name="multiple"\r\n\
+Content-type: text/html\r\n\
+\r\n\
+<a>a</a>\r\n\
+--'+boundary+'\r\n\
+Content-Disposition: form-data; name="multiple"\r\n\
+Content-type: text/plain\r\n\
+\r\n\
+b\r\n\
+--'+boundary+'\r\n\
+Content-Disposition: form-data; name="multiple"\r\n\
+Content-type: text/json\r\n\
+\r\n\
+{"c":"c"}\r\n\
+--'+boundary+'--\r\n\
+';
+
+				expect(body.toString()).to.equal(reference);
+			});
 		});
 	});
 });

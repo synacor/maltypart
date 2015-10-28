@@ -43,6 +43,7 @@ module.exports = function(grunt) {
 			},
 			test : {
 				options : {
+					multistr : true,		// allow unsafe line breaks (for test fixtures and whatnot)
 					'-W030' : true
 				},
 				src : [
