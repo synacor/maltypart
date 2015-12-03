@@ -216,7 +216,7 @@
 					arrayBufferToBinaryString(reader.result),
 					file.type,
 					file.name,
-					headers
+					headers || file.headers
 				), replace!==false);
 				if (typeof callback==='function') {
 					callback();
