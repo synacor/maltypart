@@ -1,7 +1,7 @@
 Maltypart [![NPM Version](http://img.shields.io/npm/v/maltypart.svg?style=flat)](https://www.npmjs.org/package/maltypart) [![Bower Version](http://img.shields.io/bower/v/maltypart.svg?style=flat)](http://bower.io/search/?q=maltypart)
 =========
 
-[![Join the chat at https://gitter.im/synacorinc/maltypart](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacorinc/maltypart?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/synacor/maltypart](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacor/maltypart)
 
 ![Maltypart](logo.png)
 
@@ -12,9 +12,9 @@ but offers a bit more control over fields and serialization.*
 
 **[View Demo](http://maltypart.herokuapp.com/demo)**
 
-[![Build Status](https://img.shields.io/travis/synacorinc/maltypart.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/maltypart)
-[![Dependency Status](http://img.shields.io/david/synacorinc/maltypart.svg?style=flat)](https://david-dm.org/synacorinc/maltypart)
-[![devDependency Status](http://img.shields.io/david/dev/synacorinc/maltypart.svg?style=flat)](https://david-dm.org/synacorinc/maltypart#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/synacor/maltypart.svg?style=flat&branch=master)](https://travis-ci.org/synacor/maltypart)
+[![Dependency Status](http://img.shields.io/david/synacor/maltypart.svg?style=flat)](https://david-dm.org/synacor/maltypart)
+[![devDependency Status](http://img.shields.io/david/dev/synacor/maltypart.svg?style=flat)](https://david-dm.org/synacor/maltypart#info=devDependencies)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
