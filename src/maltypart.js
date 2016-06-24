@@ -285,7 +285,7 @@
 									}
 								}
 							}
-							item += '\r\n' + v + '\r\n';
+							item = unescape(encodeURIComponent(item) + '\r\n' + v + '\r\n';
 						}
 						else if (bodyType==='form-encoded') {
 							item = encodeURIComponent(name) + '=' + encodeURIComponent(v) + '&';
