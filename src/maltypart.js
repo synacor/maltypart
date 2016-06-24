@@ -177,7 +177,7 @@
 				value = value.value;
 			}
 			else if (!isArray(value) && (!value || !(value instanceof RequestField || (value.contentType && value.data)))) {
-				value = value + '';
+				value = unescape(encodeURIComponent(value));
 			}
 			if (name.match(/\[\]$/g)) {
 				replace = false;
